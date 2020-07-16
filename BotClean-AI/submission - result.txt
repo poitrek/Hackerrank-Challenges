@@ -1,0 +1,30 @@
+Game 1 - won, 16 (11+5) moves
+0 0
+bd---
+-d---
+---d-
+---d-
+--d-d
+Game 2 - won, 18 (12+6) moves
+0 0
+b--d-
+ddd--
+-----
+-----
+d-d--
+Game 3 - won, 28 (18+10) moves
+0 0
+d---d
+-d---
+--dd-
+--dd-
+dd--d
+Game 4 - won, 25 (15+10) moves
+0 0
+ddddd
+d----
+d----
+d----
+d---d
+
+Final result: 17.83 points (Maximum on this challenge)
