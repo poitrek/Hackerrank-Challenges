@@ -1,0 +1,61 @@
+# gitignore for C++
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Visual Studio Files
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+ipch/
+x64/
+x86/
+**/*.tlog/
+*_i.c
+*_p.c
+*_i.h
+*.idb
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+.vs/
+*.suo
+*.csproj.user
+*.vbproj.user
+*.rsuser
+*.user
+*.userosscache
+*.sln.docstates
+ipch
+*sdf
+# SQL problems folder
+SQLProblems/
