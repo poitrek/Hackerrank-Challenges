@@ -14,6 +14,8 @@
 *.a
 
 # Visual Studio Files
+*.vcxproj.*
+*.vcxproj
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -58,4 +60,4 @@ x86/
 ipch
 *sdf
 # SQL problems folder
-SQLProblems/
+SQL*Problems/
