@@ -35,7 +35,7 @@ public:
 	BigInt() {
 
 	}
-	void print(bool pretty=false) {
+	void print(bool pretty = false) {
 		// Print first digit
 		vector<int>::reverse_iterator it = digits.rbegin();
 		if (it != digits.rend())
@@ -52,7 +52,7 @@ public:
 	}
 
 	void add(BigInt b) {
-		int carry = 0;		
+		int carry = 0;
 	}
 
 	BigInt operator+(BigInt& b) {
@@ -137,7 +137,7 @@ public:
 			p = p * *this;
 		return p;
 	}
-	
+
 
 };
 
