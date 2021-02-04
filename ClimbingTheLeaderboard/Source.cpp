@@ -15,14 +15,35 @@ https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem
 using namespace std;
 
 // Operator to print a vector
-ostream& operator << (ostream& o, vector<int>& vec) {
-	o << "vector[";
-	for (int i = 1; i < vec.size(); i++)
-		o << vec[i] << ", ";
-	o << vec.back() << "]";
-	return o;
+template<typename T>
+std::ostream& operator << (std::ostream& ost, const std::vector<T> v) {
+	std::copy(v.begin(), v.end(), std::ostream_iterator<T>(ost, "\n"));
+	return ost;
 }
 
+// Solution with complexity O(n+m), where
+// n - size of scores
+// m - size of alice
+vector<int> ranks(vector<int> &scores, vector<int> &alice) {
+	// Guard element at front
+	scores.insert(scores.begin(), INT32_MAX);
+	vector<int> ranks;
+	auto sc_it = scores.rbegin();
+	int sc_idx = scores.size() - 1;
+	for (auto al_it = alice.begin(); al_it != alice.end(); ++al_it) {
+		while (*al_it > *sc_it) {
+			++sc_it;
+			sc_idx--;
+		}
+		if (*al_it == *sc_it) {
+			ranks.push_back(sc_idx);
+		}
+		else {
+			ranks.push_back(sc_idx + 1);
+		}
+	}
+	return ranks;
+}
 
 int main() {
 	int n, m;
@@ -41,8 +62,7 @@ int main() {
 		int x; cin >> x;
 		alice.push_back(x);
 	}
-	cout << "Scores: " << scores << endl;
-	cout << "Alice: " << alice << endl;
-
+	vector<int> aliceRanks = ranks(scores, alice);
+	cout << aliceRanks << endl;
 	return 0;
 }
