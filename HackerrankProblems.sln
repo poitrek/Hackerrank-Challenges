@@ -43,6 +43,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CutTheSticks", "CutTheStick
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RepeatedString", "RepeatedString\RepeatedString.vcxproj", "{DDF6B806-3708-4222-89B2-54477CAF650C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaumAndBday", "TaumAndBday\TaumAndBday.vcxproj", "{2D5BB71C-C988-488C-9090-1A07B98D535B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -211,6 +213,14 @@ Global
 		{DDF6B806-3708-4222-89B2-54477CAF650C}.Release|x64.Build.0 = Release|x64
 		{DDF6B806-3708-4222-89B2-54477CAF650C}.Release|x86.ActiveCfg = Release|Win32
 		{DDF6B806-3708-4222-89B2-54477CAF650C}.Release|x86.Build.0 = Release|Win32
+		{2D5BB71C-C988-488C-9090-1A07B98D535B}.Debug|x64.ActiveCfg = Debug|x64
+		{2D5BB71C-C988-488C-9090-1A07B98D535B}.Debug|x64.Build.0 = Debug|x64
+		{2D5BB71C-C988-488C-9090-1A07B98D535B}.Debug|x86.ActiveCfg = Debug|Win32
+		{2D5BB71C-C988-488C-9090-1A07B98D535B}.Debug|x86.Build.0 = Debug|Win32
+		{2D5BB71C-C988-488C-9090-1A07B98D535B}.Release|x64.ActiveCfg = Release|x64
+		{2D5BB71C-C988-488C-9090-1A07B98D535B}.Release|x64.Build.0 = Release|x64
+		{2D5BB71C-C988-488C-9090-1A07B98D535B}.Release|x86.ActiveCfg = Release|Win32
+		{2D5BB71C-C988-488C-9090-1A07B98D535B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
