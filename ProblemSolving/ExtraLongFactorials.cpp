@@ -3,6 +3,7 @@
 #include <string>
 #include <iomanip>
 #include <chrono>
+#include <math.h>
 using namespace std;
 
 class BigInt {

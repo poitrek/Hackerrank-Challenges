@@ -4,6 +4,7 @@
 *.slo
 *.lo
 *.o
+*.exe
 
 # Compiled Dynamic libraries
 *.so
@@ -60,5 +61,3 @@ x86/
 *.sln.docstates
 ipch
 *sdf
-# SQL problems folder
-SQL*Problems/
