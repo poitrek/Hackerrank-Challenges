@@ -5,6 +5,8 @@
 *.lo
 *.o
 *.exe
+.vscode/
+.templates/
 
 # Compiled Dynamic libraries
 *.so
