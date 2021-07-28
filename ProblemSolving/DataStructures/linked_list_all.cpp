@@ -186,11 +186,18 @@ SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNo
         return head2;
     if (!head2)
         return head1;
+    if (head1->data > head2->data){
+        SinglyLinkedListNode *tmp = head1;
+        head1 = head2;
+        head2 = tmp;
+    }
     SinglyLinkedListNode *Aprev = head1, *Anext = head1->next;
     SinglyLinkedListNode *Bprev = head2, *Bnext = head2->next;
     bool checkA = true;
     while (Anext || Bnext) {
         if (checkA){
+            if (!Anext)
+                break;
             if (Bprev->data < Anext->data) {
                 Aprev->next = Bprev;
                 checkA = false;
@@ -199,6 +206,8 @@ SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNo
             Anext = Anext->next;
         }
         else {
+            if (!Bnext)
+                break;
             if (Aprev->data < Bnext->data) {
                 Bprev->next = Aprev;
                 checkA = true;
@@ -214,6 +223,112 @@ SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNo
     return head1;
 }
 
+int getNode(SinglyLinkedListNode* llist, int positionFromTail) {
+    // // Old solution
+    // // Get the size of the list    
+    // int llsize = 0;
+    // SinglyLinkedListNode* tmp = llist;
+    // while (tmp) {
+    //     llsize++;
+    //     tmp = tmp->next;
+    // }
+    // tmp = llist;
+    // // Iterate again from the front
+    // for (int i = 0; i < llsize - positionFromTail - 1; i++)
+    //     tmp = tmp->next;
+    // return tmp->data;
+    SinglyLinkedListNode *it = llist, *it_delayed = llist;
+    for (int i = 0; i < positionFromTail+1; i++)
+        it = it->next;
+    while (it){
+        it = it->next;
+        it_delayed = it_delayed->next;
+    }
+    return it_delayed->data;
+}
+
+SinglyLinkedListNode* removeDuplicatesSorted(SinglyLinkedListNode* llist) {
+    if (!llist || !llist->next)
+        return llist;
+    SinglyLinkedListNode *prev = llist, *next = llist->next;
+    SinglyLinkedListNode *to_delete;
+    while (next) {
+        if (prev->data == next->data) {
+            to_delete = next;
+            next = next->next;
+            delete to_delete;
+            prev->next = next;
+        }
+        else {
+            prev = prev->next;
+            next = next->next;            
+        }
+    }
+    return llist;
+}
+
+// Detects if the linked list has a cycle (O(n) time complexity)
+bool hasCycle(SinglyLinkedListNode* head) {
+    // "Tortoise & hare problem"
+    // tmp - traverses the linked list
+    // tmp_fast - traverses the list with double speed
+    // If the list contains a cycle, tmp and tmp_fast will meet at
+    // some point during traversal. If not, tmp_fast will eventually
+    // become a nullptr.
+    SinglyLinkedListNode *tmp = head, *tmp_fast = head;
+    while (true) {
+        tmp = tmp->next;
+        tmp_fast = tmp_fast->next;
+        if (!tmp_fast)
+            return false;
+        tmp_fast = tmp_fast->next;
+        if (!tmp_fast)
+            return false;
+        if (tmp == tmp_fast)
+            return true;
+    }
+}
+
+// Finds a merge node of two linked lists (assumes that they do merge).
+// (O(n1+n2) time complexity)
+int findMergeNode(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
+    SinglyLinkedListNode *n1 = head1, *n2 = head2;
+    // Advance both lists normally
+    while (n1 && n2) {
+        n1 = n1->next;
+        n2 = n2->next;
+    }
+    // p1 - new pointer to the shorter list
+    // p2 - new pointer to the longer list
+    SinglyLinkedListNode *p1, *p2, *n;
+    // If n1 finished first
+    if (!n1) {
+        p1 = head1;
+        p2 = head2;
+        n = n2;
+    }
+    // If n2 finished first
+    else {
+        p1 = head2;
+        p2 = head1;
+        n = n1;
+    }
+    // Count the lists length difference
+    int len_dif = 0;
+    while (n) {
+        n = n->next;
+        len_dif++;
+    }
+    // Iterate both lists again, but with advancement of
+    // the longer list
+    for (int i = 0; i < len_dif; i++)
+        p2 = p2->next;
+    while (p1 != p2) {
+        p1 = p1->next;
+        p2 = p2->next;
+    }
+    return p1->data;    
+}
 
 void free_singly_linked_list(SinglyLinkedListNode* node) {
     while (node) {
