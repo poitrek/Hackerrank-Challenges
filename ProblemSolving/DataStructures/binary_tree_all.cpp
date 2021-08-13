@@ -426,25 +426,38 @@ Node* lca(Node* root, int v1, int v2) {
 }
 
 // Tree top view
-// (To be completed)
+// O(n) time complexity (n - number of nodes)
 
 deque<int> topView(Node *root) {
     deque<int> result;
     // x - horizontal coordinate of nodes
     int cur_x = 0;
     int max_x(cur_x), min_x(cur_x);
-    deque<Node*> bfs_queue;
-    if (root)
-        bfs_queue.push_back(root);
+    deque<pair<Node*, int>> bfs_queue;
+    if (root) {
+        // starting with root and 0 coord
+        bfs_queue.emplace_back(root, cur_x);
+        result.push_front(root->data);
+    }
     Node *n;
 
     // Perform BFS (level order) traversal
     while(!bfs_queue.empty()) {
-        n = bfs_queue.front();
+        n = bfs_queue.front().first;
+        cur_x = bfs_queue.front().second;
+        // push node to the viewed nodes list
+        if (cur_x < min_x) {
+            min_x = cur_x;
+            result.push_front(n->data);
+        }
+        if (cur_x > max_x) {
+            max_x = cur_x;
+            result.push_back(n->data);
+        }
         if (n->left)
-            bfs_queue.push_back(n->left);
+            bfs_queue.emplace_back(n->left, cur_x - 1);
         if (n->right)
-            bfs_queue.push_back(n->right);
+            bfs_queue.emplace_back(n->right, cur_x + 1);
         bfs_queue.pop_front();
     }
     return result;
