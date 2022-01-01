@@ -5,6 +5,7 @@
 *.lo
 *.o
 *.exe
+*.stackdump
 .vscode/
 
 # Compiled Dynamic libraries

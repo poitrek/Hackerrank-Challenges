@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
+#include <set>
 
 using namespace std;
 
@@ -57,9 +59,26 @@ void test_vector2() {
 	a.insert(a.begin(), size_t(n), 0);
 }
 
+void test_string_it() {
+	string s = "cocoa";
+	for (auto it = s.begin()+1; it != s.end(); ++it)
+		cout << *it;
+	cout << endl;
+}
+
+void test_set_1() {
+	set<pair<int,int>> pairs;
+	pairs.insert(pair(10, 15));
+	pairs.insert(pair(10, 23));
+	for (pair<int,int> p : pairs) {
+		cout << "(" << p.first << ", " << p.second << ")" << endl;
+	}
+}
+
 int main()
 {
-	test_vector2();
+	test_set_1();
+	// test_vector2();
 	//test_power2();
 	//test_xor();
 	cout << "Program ended";
