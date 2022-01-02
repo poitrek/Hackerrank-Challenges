@@ -19,7 +19,9 @@ class BombermanSimulator:
 
 
 class SlowBombermanSimulator(BombermanSimulator):
-    
+    """Slow Bomberman simulator. Processes cell grid step-by-step according to
+    problem assumptions. Time complexity O(r*c*n) (n - number of steps, r/c - number of grid rows/columns)"""
+
     @staticmethod
     def _add_borders(arr: list, value):
         """Adds unused borders to a 2D list in order to simplify operations
@@ -95,13 +97,17 @@ class SlowBombermanSimulator(BombermanSimulator):
 
 
 class FastBombermanSimulator(BombermanSimulator):
+    """Fast Bomberman simulator. Uses noticed periodicity of states of the grid
+    during the process. For any initial grid state, it's repeated in a 4-step 
+    cycle, starting from the 3rd state. Time complexity: O(r*c) (r/c - number of 
+    grid rows/columns)."""
+
     @staticmethod
     def simulate(grid, n_steps):
         if n_steps <= 2:
             return SlowBombermanSimulator.simulate(grid, n_steps)
         else:
             return SlowBombermanSimulator.simulate(grid, (n_steps+1) % 4 + 3)
-
 
 
 def print_grid(grid):
