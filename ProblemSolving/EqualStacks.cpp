@@ -30,7 +30,7 @@ int equalStacks(vector<int> h1, vector<int> h2, vector<int> h3) {
                 h1h += h1[i1++];
                 h2h += h2[i2++];
                 h3h += h3[i3++];
-            }                
+            }
             else {
                 int hmax = max({h1h, h2h, h3h});
                 if (h1h < hmax && i1 <= h1size) {
